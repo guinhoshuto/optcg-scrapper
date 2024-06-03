@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "op-tcg-scrapper"
+version = "0.1.0"
+description = ""
+authors = ["Guilherme S. <guinho.shuto@gmail.com>"]
+readme = "README.md"
+packages = [{include = "op_tcg_scrapper"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+bs4 = "^0.0.2"
+requests = "^2.31.0"
+pandas = "^2.2.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
