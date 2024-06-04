@@ -20,6 +20,10 @@ df = pd.DataFrame(columns=[
     'image'
 ])
 
+def handleNumber(number):
+    if(number == '-'):
+        return ''
+    return number
 
 def scrape_page(url):
     response = requests.get(url)
@@ -65,9 +69,11 @@ def scrape_page(url):
 
         power = info_cols[1].find('div', class_="power").get_text(strip=True)
         power = power.split("Power")[1]
+        power = handleNumber(power)
 
         counter = info_cols[1].find('div', class_="counter").get_text(strip=True)
         counter = counter.split("Counter")[1]
+        counter = handleNumber(counter)
 
         color = back_col.find('div', class_="color").get_text(strip=True)
         color = color.split("Color")[1]
@@ -82,6 +88,8 @@ def scrape_page(url):
             trigger = ''
 
         imagem = front_col.find('img').get('src')
+        imagem = imagem.split("?")[0]
+        imagem = imagem[2:]
         df.loc[len(df.index)] = [
             code, 
             code_variant,
